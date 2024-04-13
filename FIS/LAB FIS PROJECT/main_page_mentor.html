@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>mentor profile</title>
+    <h1 style="color: whitesmoke">Welcome, <em>Mentor</em></h1>
+    <body style="background-color: #702963">
+      <center><h2>Profile settings</h2></center>
+      <form>
+        <label style="color: whitesmoke">Whats your gender?</label><br />
+        <input type="radio" id="male" name="Gender" value="male" />
+        <label for="male">Male</label><br />
+        <input type="radio" id="female" name="Gender" value="female" />
+        <label for="female">Female</label><br><br>
+      </form>
+      <form action="/action_page.php" method="get">
+      <label for="Careers" style="color: whitesmoke;">Choose your field of expertise:</label><br><br>
+          <input list="Careers" name="Career" id="Career">
+          <datalist id="Careers">
+            <option value="Technology">
+            <option value="Engineering">
+            <option value="Scientist">
+            <option value="Doctor">
+            <option value="Nurse">
+            <option value="Vet">
+            <option value="Dentist">
+            <option value="Lawyer">
+            <option value="Accountant">
+            <input type="submit">
+          </datalist>
+          <br><br>
+      <label for="special" style="color: whitesmoke;">What's your specialization?</label><br><br>
+      <input type="text" id="special" name="special"><br><br>
+          </form>
+          <a href="done.html"><button>Done</button></a>
+    </body>
+  </head>
+</html>

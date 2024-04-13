@@ -1,0 +1,51 @@
+img {
+  width: "100px";
+  height: "50px";
+}
+h1 {
+  color: purple;
+  background-color: #00ffff;
+}
+h2 {
+  color: RGB(0, 128, 0);
+  background-color: RGB(50%, 50%, 50%);
+}
+#b{ 
+font-weight: bold;
+font-style:oblique;
+font-variant:small-caps;
+font-family: 'Times New Roman', Times, serif;
+font-size: small;
+direction: ltr;
+letter-spacing: 1cap;
+word-spacing: 0cap;
+white-space: pre ;
+text-align:justify;
+text-transform: capitalize;
+text-shadow:2cap;
+color:violet;
+text-indent: 2cap;
+text-decoration: wavy;
+}
+body {
+    background-position: center center;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  div{
+    border: #00ffff;
+    border-radius: 50px 50px;
+
+    padding: 10px;
+  }
+span{
+  color:purple;
+  float: right; 
+}
+nav{
+  color:blue;
+  display: inline-block;
+  font-size: large;
+  white-space: pre;
+}

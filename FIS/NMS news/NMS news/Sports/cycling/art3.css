@@ -1,0 +1,154 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    grid-template-rows: auto;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #780000;
+    color: #fff;
+    padding: 5px 0 0 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    opacity: 80%;
+
+}
+
+pre {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.navbar {
+    margin-top: 10px;
+    padding: 0px;
+    width: 100vw;
+    background-color: #fdf0d5;
+    height: 30px;
+    box-shadow: 0px 20px 11px -10px #02000070;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;
+    align-content: center;
+
+}
+
+.navbar a {
+    color: #003049;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+
+}
+
+a:hover {
+    color: #c1121f;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: auto;
+    gap: 20px;
+    justify-content: start;
+    padding: 100px 20px 20px;
+    padding: fixed;
+}
+
+figcaption {
+    font-size: 15px;
+    font-weight: bold;
+    background: #ecececd5;
+    margin-top: 0px;
+    border-left: 1px solid #8A8C8E;
+    padding-left: 0.5rem;
+    color: #545658;
+
+}
+
+section {
+    clear: both;
+}
+
+#head{
+    text-align: center;
+}
+
+
+aside {
+    display: grid;
+    grid-row: repeat(4, 1fr);
+    position: fixed;
+    width: 20%;
+    padding: 15px;
+    margin-left: 15px;
+    right: 15px;
+    font-style: italic;
+    background-color: lightgrey;
+    height: fit-content;
+    
+}
+
+.asideoscar {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 5px 10px;
+
+}
+aside a {
+    text-decoration: none;
+    color:black;
+    font-size: 15px;
+}
+
+a {
+    color: #000;
+}
+
+/*article 1*/
+.oscar {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: auto;
+    justify-content: flex-start;
+    padding: 100px 20px 20px;
+    padding: fixed;
+    font-size: 18px;
+    width: 75%;
+}
+
+.article1 {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 15px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+img {
+    width: 100%;
+}
+
+.footer {
+    background-color: #003049;
+    color: #fdf0d5;
+    text-align: center;
+    padding: 10px;
+    transform: b;
+    margin-top: auto;
+}
