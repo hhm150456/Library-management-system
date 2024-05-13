@@ -1,3 +1,5 @@
 ﻿  File organization group project.cpp
 C:\Users\hagar\source\repos\File organization group project\File organization group project\File organization group project.cpp(60,30): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
-  File organization group project.vcxproj -> C:\Users\hagar\source\repos\File organization group project\x64\Debug\File organization group project.exe
+C:\Users\hagar\source\repos\File organization group project\File organization group project\File organization group project.cpp(270,9): error C2146: syntax error: missing ';' before identifier 'n_book'
+C:\Users\hagar\source\repos\File organization group project\File organization group project\File organization group project.cpp(270,9): error C2065: 'n_book': undeclared identifier
+C:\Users\hagar\source\repos\File organization group project\File organization group project\File organization group project.cpp(271,4): error C2065: 'n_book': undeclared identifier

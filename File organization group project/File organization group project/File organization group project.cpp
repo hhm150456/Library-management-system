@@ -70,6 +70,12 @@ public:
 		index << "$";
 		index.close();
 	}
+
+	int book_record_size() {
+		int size = sizeof(Book_index) + sizeof(Number_of_pages) + sizeof(Printing_house) + sizeof(Number_of_times_borrowed) +
+			sizeof(Title) + sizeof(Author) + sizeof(Edition) + sizeof(Year_of_publishing) + sizeof(Genre);
+		return size;
+	}
 };
 
 class Library_system {
@@ -106,13 +112,13 @@ public:
 			{
 				books.seekg(0, ios::cur);
 				books.read((char*)&flag, 1);
-				cout << flag << endl << endl;
 				if (flag == deleted_book) {
 					getline(books, record, recordDelimiter);
 					getline(index, record, recordDelimiter);
 					continue;
 				}
 				else {
+					cout << endl << endl;
 					books.seekg(-1, ios::cur);
 					getline(index, field, fieldDelimiter);
 					cout << "\t\t\t\t\t\t   ID: " << field << endl;
@@ -158,6 +164,7 @@ public:
 				short counter = 1;
 				while (counter <= no)
 				{
+					books.seekg(0, ios::cur);
 					books.read((char*)&flag, 1);
 					if (flag == deleted_book) {
 						getline(books, record, recordDelimiter);
@@ -186,6 +193,7 @@ public:
 						cout << "\t\t\t\t\t\t   Year of publishing: " << field << endl;
 						getline(books, field, fieldDelimiter);
 						cout << "\t\t\t\t\t\t   Number of times borrowed: " << field << endl;
+						getline(books, record, recordDelimiter);
 						++counter;
 					}
 				}
@@ -259,6 +267,8 @@ int main()
 		else if (Choice == 2)
 		{
 			system("CLS");
+			book n_book;
+			n_book.get_book();
 		}
 		else if (Choice == 3)
 		{
