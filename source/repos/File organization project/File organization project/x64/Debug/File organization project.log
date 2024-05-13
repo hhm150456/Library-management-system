@@ -1,0 +1,4 @@
+﻿  File organization project.cpp
+C:\Users\hagar\source\repos\File organization project\File organization project\File organization project.cpp(59,7): warning C4101: 'i': unreferenced local variable
+C:\Users\hagar\source\repos\File organization project\File organization project\File organization project.cpp(154,24): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  File organization project.vcxproj -> C:\Users\hagar\source\repos\File organization project\x64\Debug\File organization project.exe

@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hagar\\source\\repos\\File organization project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{10A78047-3703-49CB-B547-FCCAC952F8B5}|File organization project\\File organization project.vcxproj|C:\\Users\\hagar\\source\\repos\\File organization project\\File organization project\\File organization project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{10A78047-3703-49CB-B547-FCCAC952F8B5}|File organization project\\File organization project.vcxproj|solutionrelative:File organization project\\File organization project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "File organization project.cpp",
+              "DocumentMoniker": "C:\\Users\\hagar\\source\\repos\\File organization project\\File organization project\\File organization project.cpp",
+              "RelativeDocumentMoniker": "File organization project\\File organization project.cpp",
+              "ToolTip": "C:\\Users\\hagar\\source\\repos\\File organization project\\File organization project\\File organization project.cpp",
+              "RelativeToolTip": "File organization project\\File organization project.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgBAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-04T20:25:53.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
