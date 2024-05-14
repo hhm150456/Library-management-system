@@ -3,7 +3,9 @@
 #include <fstream>
 #include <string>
 #include "book.h"
+
 using namespace std;
+
 class Library_system {
 private:
 	int Choice;
@@ -26,7 +28,6 @@ public:
 	{
 		char flag;
 		ifstream books("books.txt");
-		ifstream index("index.txt");
 		string record;
 		string field;
 		books.seekg(0, ios::beg);
@@ -40,15 +41,13 @@ public:
 				books.read((char*)&flag, 1);
 				if (flag == deleted_book) {
 					getline(books, record, recordDelimiter);
-					getline(index, record, recordDelimiter);
 					continue;
 				}
 				else {
 					cout << endl << endl;
 					books.seekg(-1, ios::cur);
-					getline(index, field, fieldDelimiter);
+					getline(books, field, fieldDelimiter);
 					cout << "\t\t\t\t\t\t   ID: " << field << endl;
-					getline(index, record, recordDelimiter);
 					getline(books, field, fieldDelimiter);
 					cout << "\t\t\t\t\t\t   Title: " << field << endl;
 					getline(books, field, fieldDelimiter);
@@ -81,7 +80,6 @@ public:
 			no = 5;
 			char flag;
 			fstream books("books.txt", ios::in | ios::binary);
-			fstream index("index.txt", ios::in | ios::binary);
 			string record;
 			string field;
 			books.seekg(0, ios::beg);
@@ -94,15 +92,13 @@ public:
 					books.read((char*)&flag, 1);
 					if (flag == deleted_book) {
 						getline(books, record, recordDelimiter);
-						getline(index, record, recordDelimiter);
 						continue;
 					}
 					else {
 						books.seekg(-1, ios::cur);
 						cout << endl << endl;
-						getline(index, field, fieldDelimiter);
+						getline(books, field, fieldDelimiter);
 						cout << "\t\t\t\t\t\t   ID: " << field << endl;
-						getline(index, record, recordDelimiter);
 						getline(books, field, fieldDelimiter);
 						cout << "\t\t\t\t\t\t   Title: " << field << endl;
 						getline(books, field, fieldDelimiter);
@@ -186,6 +182,7 @@ public:
 			if (flag == deleted_book)
 			{
 				getline(index, record, recordDelimiter);
+				getline(books, record, recordDelimiter);
 				continue;
 			}
 			index.seekg(-1, ios::cur);
@@ -195,8 +192,8 @@ public:
 				getline(index, loc, fieldDelimiter);
 				offset = stoi(loc);
 				books.seekg(offset, ios::beg);
+				getline(books, field, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   ID: " << book_id << endl;
-				getline(index, record, recordDelimiter);
 				getline(books, field, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Title: " << field << endl;
 				getline(books, field, fieldDelimiter);
@@ -231,47 +228,32 @@ public:
 	int search_name(string name)
 	{
 		fstream books("books.txt", ios::in | ios::binary);
-		fstream index("index.txt", ios::in | ios::binary);
 		if (!books.is_open()) {
-			cerr << "Books are not currently available" << endl;
-		}
-		if (!index.is_open()) {
 			cerr << "Books are not currently available" << endl;
 		}
 		books.seekg(0);
 		int counter = 0;
-		string title;
+		string title,p_id;
 		int matches = 0;
 		char flag;
-		string id;
 		string record;
 		int no = number_of_books();
 		while (counter < no)
 		{
+			books.read((char*)&flag, 1);
+			if (flag == deleted_book)
+			{
+				getline(books, record, recordDelimiter);
+				continue;
+			}
+			books.seekg(-1, ios::cur);
+			getline(books, p_id, fieldDelimiter);
 			getline(books, title, fieldDelimiter);
 			if (name == title)
 			{
-				books.read((char*)&flag, 1);
-				if (flag == deleted_book)
-				{
-					getline(books, record, recordDelimiter);
-					continue;
-				}
-				books.seekg(-1, ios::cur);
-				index.seekg(0);
-				int j = 0;
-				while (j < counter)
-				{
-					index.read((char*)&flag, 1);
-					if (flag != deleted_book)
-					{
-						++j;
-					}
-					getline(index, record, recordDelimiter);
-				}
-				getline(index, id, fieldDelimiter);
-				cout << "\t\t\t\t\t\t   ID: " << id << endl;
+				cout << "\t\t\t\t\t\t   ID: " << p_id << endl;
 				cout << "\t\t\t\t\t\t   Title: " << title << endl;
+				getline(books, title, fieldDelimiter);
 				getline(books, title, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Author: " << title << endl;
 				getline(books, title, fieldDelimiter);

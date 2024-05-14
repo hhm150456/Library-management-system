@@ -1,6 +1,9 @@
 ﻿  File organization group project.cpp
-C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(68,30): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(54,30): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
   (compiling source file 'File%20organization%20group%20project.cpp')
   
-C:\Users\hagar\source\repos\File organization group project\File organization group project\Library_system.h(234,1): warning C4715: 'Library_system::search_id': not all control paths return a value
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(140,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\Library_system.h(226,1): warning C4715: 'Library_system::search_id': not all control paths return a value
   File organization group project.vcxproj -> C:\Users\hagar\source\repos\File organization group project\x64\Debug\File organization group project.exe

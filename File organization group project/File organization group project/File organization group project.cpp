@@ -45,7 +45,12 @@ int main()
 		else if (Choice == 3)
 		{
 			system("CLS");
-			
+			string name;
+			cout << "Enter the name of the record you want to delete: " << endl;
+			cin.ignore(1, '\n');
+			getline(cin, name);
+			Book.delete_book_name(name);
+			cout << "Book deleted" << endl;
 		}
 		else if (Choice == 4)
 		{
@@ -55,7 +60,7 @@ int main()
 			cin.ignore(1, '\n');
 			getline(cin, name);
 			int no_of_matches = Library_Management_System.search_name(name);
-			if (no_of_matches > 0)
+			if (no_of_matches > 1)
 			{
 				cout << "Enter the id of the record you are searching for: " << endl;
 				string id;
