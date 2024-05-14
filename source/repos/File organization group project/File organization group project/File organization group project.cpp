@@ -40,8 +40,6 @@ public:
 		cin >> Number_of_times_borrowed;
 		cout << "Enter book ID" << endl;
 		cin >> Book_index;
-		add_book();
-		add_index();
 	}
 
 	void add_book()
@@ -70,6 +68,38 @@ public:
 		index << "$";
 		index.close();
 	}
+
+	int book_record_size() {
+		int size = sizeof(Book_index) + sizeof(Number_of_pages) + sizeof(Printing_house) + sizeof(Number_of_times_borrowed) +
+			sizeof(Title) + sizeof(Author) + sizeof(Edition) + sizeof(Year_of_publishing) + sizeof(Genre);
+		return size;
+	}
+
+	void update_book(book o, string id)
+	{
+		Library_system l;
+		fstream books("books.txt", ios::in | ios::binary);
+		fstream index("index.txt", ios::in | ios::binary);
+		if (!books.is_open()) {
+			cerr << "Books are not currently available" << endl;
+		}
+		if (!index.is_open()) {
+			cerr << "Books are not currently available" << endl;
+		}
+		short update_offset = l.search_id(id);
+		if (book_record_size() > o.book_record_size())
+		{
+			l.delete_book(o);
+			add_book();
+			add_index();
+		}
+		else
+		{
+			books.seekp(update_offset, ios::beg);
+			books <<
+		}
+	}
+
 };
 
 class Library_system {
@@ -106,13 +136,13 @@ public:
 			{
 				books.seekg(0, ios::cur);
 				books.read((char*)&flag, 1);
-				cout << flag << endl << endl;
 				if (flag == deleted_book) {
 					getline(books, record, recordDelimiter);
 					getline(index, record, recordDelimiter);
 					continue;
 				}
 				else {
+					cout << endl << endl;
 					books.seekg(-1, ios::cur);
 					getline(index, field, fieldDelimiter);
 					cout << "\t\t\t\t\t\t   ID: " << field << endl;
@@ -158,6 +188,7 @@ public:
 				short counter = 1;
 				while (counter <= no)
 				{
+					books.seekg(0, ios::cur);
 					books.read((char*)&flag, 1);
 					if (flag == deleted_book) {
 						getline(books, record, recordDelimiter);
@@ -186,6 +217,7 @@ public:
 						cout << "\t\t\t\t\t\t   Year of publishing: " << field << endl;
 						getline(books, field, fieldDelimiter);
 						cout << "\t\t\t\t\t\t   Number of times borrowed: " << field << endl;
+						getline(books, record, recordDelimiter);
 						++counter;
 					}
 				}
@@ -227,6 +259,51 @@ public:
 		books.close();
 		return counter;
 	}
+
+	void delete_book(book o)
+	{
+
+	}
+
+	short search_id(string id) //return offset of book and print the book
+	{
+		fstream books("books.txt", ios::in | ios::binary);
+		fstream index("index.txt", ios::in | ios::binary);
+		if (!books.is_open()) {
+			cerr << "Books are not currently available" << endl;
+		}
+		if (!index.is_open()) {
+			cerr << "Books are not currently available" << endl;
+		}
+		short update_offset = 0;
+		int counter = 0;
+		string book_id;
+		string offset;
+		string record;
+		while (counter < number_of_books())
+		{
+			getline(index, book_id, fieldDelimiter);
+			if (id == book_id)
+			{
+				getline(index, offset, fieldDelimiter);
+				index.read((char*)update_offset, sizeof(update_offset));
+				return update_offset;
+			}
+			else
+			{
+				getline(index, record, recordDelimiter);
+			}
+		}
+		if (update_offset == 0)
+		{
+			return 0;
+		}
+	}
+
+	void search_name(string name)
+	{
+
+	}
 };
 
 int main()
@@ -250,15 +327,20 @@ int main()
 		cout << "\t\t\t\t\t\t  7. Display first 5 books in system." << endl << endl;
 		cout << "\t\t\t\t\t\t     Choose your operation: " << endl;
 		int Choice = Library_Management_System.choose_operation();
-		book book;
+		book Book;
 		if (Choice == 1)
 		{
 			system("CLS");
-			book.get_book();
+			Book.get_book();
+			Book.add_book();
+			Book.add_index();
 		}
 		else if (Choice == 2)
 		{
 			system("CLS");
+			book n_book;
+			n_book.get_book();
+
 		}
 		else if (Choice == 3)
 		{
