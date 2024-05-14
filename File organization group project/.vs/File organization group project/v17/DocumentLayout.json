@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\hagar\\source\\repos\\File organization group project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|solutionrelative:File organization group project\\book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\Library_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|solutionrelative:File organization group project\\Library_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\File organization group project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{920C4F8D-B4BB-40E6-A47C-7151B2DC466C}|File organization group project\\File organization group project.vcxproj|solutionrelative:File organization group project\\File organization group project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -14,24 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "File organization group project.cpp",
-              "DocumentMoniker": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\File organization group project.cpp",
-              "RelativeDocumentMoniker": "File organization group project\\File organization group project.cpp",
-              "ToolTip": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\File organization group project.cpp*",
-              "RelativeToolTip": "File organization group project\\File organization group project.cpp*",
-              "ViewState": "AQIAAPoAAAAAAAAAAAAUwA4BAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-11T20:44:55.764Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Library_system.h",
+              "DocumentMoniker": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\Library_system.h",
+              "RelativeDocumentMoniker": "File organization group project\\Library_system.h",
+              "ToolTip": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\Library_system.h",
+              "RelativeToolTip": "File organization group project\\Library_system.h",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAAAKIAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-14T04:22:34.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "book.h",
+              "DocumentMoniker": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\book.h",
+              "RelativeDocumentMoniker": "File organization group project\\book.h",
+              "ToolTip": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\book.h",
+              "RelativeToolTip": "File organization group project\\book.h",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAAAGMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-14T04:24:32.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "File organization group project.cpp",
+              "DocumentMoniker": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\File organization group project.cpp",
+              "RelativeDocumentMoniker": "File organization group project\\File organization group project.cpp",
+              "ToolTip": "C:\\Users\\hagar\\source\\repos\\File organization group project\\File organization group project\\File organization group project.cpp",
+              "RelativeToolTip": "File organization group project\\File organization group project.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-11T20:44:55.764Z",
+              "EditorCaption": ""
             }
           ]
         }
