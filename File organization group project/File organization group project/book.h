@@ -160,9 +160,10 @@ public:
 	{
 		fstream index;
 		index.open("index.txt", ios::app);
+		index.seekp(0, ios::end);
 		index << Book_index << "|";
 		index << record_offset << "|";
-		index << '$';
+		index << "$";
 		index.close();
 	}
 

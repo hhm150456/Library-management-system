@@ -155,7 +155,7 @@ public:
 	}
 
 	short search_id(string id)
-	{
+		{
 		fstream books("books.txt", ios::in | ios::binary);
 		fstream index("index.txt", ios::in | ios::binary);
 		if (!books.is_open()) {
@@ -169,6 +169,8 @@ public:
 		string loc;
 		short offset = 0;
 		string record;
+		index.seekg(0);
+		
 		string field;
 		char flag;
 		int no = number_of_books();
@@ -185,8 +187,7 @@ public:
 			getline(index, book_id, fieldDelimiter);
 			if (id == book_id)
 			{
-				getline(index, loc, fieldDelimiter);
-				offset = stoi(loc);
+				index.read((char*)&offset,sizeof(short));
 				books.seekg(offset, ios::beg);
 				getline(books, field, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   ID: " << book_id << endl;
@@ -213,6 +214,7 @@ public:
 			{
 				getline(index, record, recordDelimiter);
 			}
+			++counter;
 		}
 		if (offset == 0)
 		{
