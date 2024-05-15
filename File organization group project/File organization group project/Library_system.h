@@ -254,7 +254,6 @@ public:
 				cout << "\t\t\t\t\t\t   ID: " << p_id << endl;
 				cout << "\t\t\t\t\t\t   Title: " << title << endl;
 				getline(books, title, fieldDelimiter);
-				getline(books, title, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Author: " << title << endl;
 				getline(books, title, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Genre: " << title << endl;
