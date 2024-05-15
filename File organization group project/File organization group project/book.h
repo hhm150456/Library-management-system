@@ -50,16 +50,17 @@ public:
 	{
 		book r;
 		fstream books("books.txt", ios::in);
-		int n = l.number_of_books();
 		int counter = 0;
+		books.seekg(0);
 		string b_id;
 		string record;
-		while (counter < n)
+		while (!books.eof())
 		{
 			getline(books, b_id, '|');
 			if (id == b_id)
 			{
 				int x = 1 + b_id.length();
+				r.record_offset = books.tellg();
 				books.seekg(-x, ios::cur);
 				getline(books, r.Book_index, '|');
 				getline(books, r.Title, '|');
@@ -75,9 +76,57 @@ public:
 				getline(books, temp_y, '|');
 				getline(books, temp_b, '|');
 				r.Edition = stoi(temp_e);
-				Number_of_pages = stoi(temp_n);
-				Year_of_publishing = stoi(temp_y);
-				Number_of_times_borrowed = stoi(temp_b);
+				r.Number_of_pages = stoi(temp_n);
+				r.Year_of_publishing = stoi(temp_y);
+				r.Number_of_times_borrowed = stoi(temp_b);
+				break;
+			}
+			else
+			{
+				getline(books, record, '|');
+				++counter;
+			}
+		}
+		return r;
+	}
+
+	book get_book_from_file_name(string name)
+	{
+		book r;
+		fstream books("books.txt", ios::in);
+		int n = l.number_of_books();
+		int counter = 0;
+		books.seekg(0);
+		string b_id;
+		string record;
+		string title;
+
+		while (counter < n)
+		{
+			getline(books, b_id, '|');
+			getline(books, title, '|');
+			if (name == title)
+			{
+				int x = 2 + b_id.length()+title.length();
+				books.seekg(-x, ios::cur);
+				getline(books, r.Book_index, '|');
+				getline(books, r.Title, '|');
+				getline(books, r.Author, '|');
+				getline(books, r.Genre, '|');
+				string temp_e;
+				string temp_n;
+				string temp_y;
+				string temp_b;
+				getline(books, temp_e, '|');
+				getline(books, temp_n, '|');
+				getline(books, Printing_house, '|');
+				getline(books, temp_y, '|');
+				getline(books, temp_b, '|');
+				r.record_offset = books.tellg();
+				r.Edition = stoi(temp_e);
+				r.Number_of_pages = stoi(temp_n);
+				r.Year_of_publishing = stoi(temp_y);
+				r.Number_of_times_borrowed = stoi(temp_b);
 				break;
 			}
 			else
@@ -113,7 +162,7 @@ public:
 		index.open("index.txt", ios::app);
 		index << Book_index << "|";
 		index << record_offset << "|";
-		index << "$";
+		index << '$';
 		index.close();
 	}
 
@@ -123,8 +172,8 @@ public:
 		int size=0;
 		book d = get_book_from_file(id);
 		string field;
-		fstream books("books.txt", ios::out );
-		fstream index("index.txt", ios::out);
+		fstream books("books.txt",ios::in |ios::out );
+		fstream index("index.txt", ios::in | ios::out);
 		if (!books.is_open()) {
 			cerr << "Books are not currently available" << endl;
 		}
@@ -145,7 +194,7 @@ public:
 		int x = 1 + b_id.length();
 		index.seekp(-x,ios::cur);
 		index.put('*');
-		header(d.get_record_size());
+		header(d.get_record_size(),l.search_id(id));
 		index.close();
 		books.close();
 	}
@@ -213,7 +262,7 @@ public:
 						 x = 1 + b_id.length();
 						index.seekp(-x, ios::cur);
 						index.put('*');
-						header(d.get_record_size());
+						header(d.get_record_size(),d.record_offset);
 						break;
 					}
 				}
@@ -223,7 +272,7 @@ public:
 		}
 	}
 
-	void update_book_id(string id, book n, short header)
+	void update_book_id(string id, book n)
 	{
 		Library_system l;
 		fstream books("books.txt", ios::in | ios::binary);
@@ -234,45 +283,74 @@ public:
 		if (!index.is_open()) {
 			cerr << "Books are not currently available" << endl;
 		}
+		fstream avail("avail.txt", ios::in | ios::binary);
+		if (!books.is_open()) {
+			cerr << "Books are not currently available" << endl;
+		}
 		short update_offset = l.search_id(id);
 		books.seekg(update_offset);
-		//delete file
-		//compare n.size to header
-		//if ()
+		delete_book_id(id);
+		bool o = true;
+		short size = -1;
+		string record;
+		while (o)
+		{
+			avail.read((char*)&size, sizeof(short));
+			if (size >= n.get_record_size())
+			{
+				n.add_book();
+				n.add_index();
+				o = false;
+				break;
+			}
+			else
+			{
+				getline(avail, record, '$');
+				if (avail.eof())
+				{
+					break;
+				}
+			}
+		}
+		if (o == true)
+		{
+			n.add_book();
+			n.add_index();
+		}
 		index.close();
 		books.close();
 	}
 
-	void header( short lastDeletedRecordSize) {
-		fstream avail("avail.txt", ios::in  | ios::ate);
+	short return_head()
+	{
+		fstream avail("avail.txt", ios::in | ios::binary);
+		if (!avail.is_open()) {
+			cerr << "Error opening file." << endl;
+			return -1;
+		}
+		short head;
+		avail.read((char*)&head, sizeof(short));
+		 return head;
+	}
+
+	void header( short lastDeletedRecordSize, short offset) {
+		fstream avail("avail.txt", ios::in | ios::app);
 		if (!avail.is_open()) {
 			cerr << "Error opening file."  << endl;
 			return;
 		}
-
-		// Read the entire content of the file into a string
 		avail.seekg(0, ios::beg);
 		stringstream file;
 		file << avail.rdbuf();
-
-		// Get the content of the file as a string
 		string Content = file.str();
-
-		// Create a string with the last deleted record size at the beginning
 		stringstream newContent;
-		newContent << lastDeletedRecordSize << "|" << Content;
-
-		// Move the file pointer to the beginning
+		newContent << lastDeletedRecordSize << "|" << offset << "|" << "$" << Content;
 		avail.seekp(0, ios::beg);
-
-		// Write the new content back to the file
 		avail << newContent.str();
-
-		// Truncate the file if the new content is shorter than the original content
 		avail.close();
 	}
 
-	void update_book_name(string name, book n, short header)
+	void update_book_name(string name, book n)
 	{
 		Library_system l;
 		fstream books("books.txt", ios::in | ios::binary);
@@ -294,7 +372,7 @@ public:
 			cout << "Enter the id of the record you want to update: " << endl;
 			string id;
 			getline(cin, id);
-			update_book_id(id, n, header);
+			update_book_id(id, n);
 		}
 		else
 		{
@@ -311,14 +389,43 @@ public:
 					continue;
 				}
 				books.seekg(-1, ios::cur);
+				avail.seekg(0, ios::beg);
 				getline(books, p_id, '|');
 				getline(books, title, '|');
+				string record;
 				if (name == title)
 				{
+					short size=-1;//=return_head(); 
+					bool o = true;
 					int x = title.length() + 2 + p_id.length();
 					books.seekp(-x, ios::cur);
-					n.add_book();
-					n.add_index();
+					delete_book_name(name);
+					while (o)
+					{
+						avail.read((char*)&size, sizeof(short));
+						if (size >= n.get_record_size())
+						{
+							
+							n.add_book();
+							n.add_index();
+							o = false;
+							break;
+						}
+						else
+						{
+							getline(avail, record, '$');
+							if (avail.eof())
+							{
+								break;
+							}
+						}
+					}
+					if (o == true)
+					{
+						n.add_book();
+						n.add_index();
+					}
+					break;
 				}
 				else
 				{
@@ -330,5 +437,6 @@ public:
 		}
 		index.close();
 		books.close();
+		avail.close();
 	}
 };

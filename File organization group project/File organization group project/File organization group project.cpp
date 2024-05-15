@@ -38,9 +38,14 @@ int main()
 		else if (Choice == 2)
 		{
 			system("CLS");
+			cout << "Which book do you want to update? " << endl;
+			string name;
+			cin.ignore(1, '\n');
+			getline(cin, name);
 			book n_book;
 			n_book.get_book();
-
+			Book.get_book_from_file_name(name);
+			Book.update_book_name(name, n_book);
 		}
 		else if (Choice == 3)
 		{

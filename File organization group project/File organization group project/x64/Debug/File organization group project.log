@@ -1,1 +1,33 @@
-﻿  File organization group project.vcxproj -> C:\Users\hagar\source\repos\File organization group project\x64\Debug\File organization group project.exe
+﻿  File organization group project.cpp
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(62,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(63,34): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(110,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(125,34): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(145,30): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(194,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(208,11): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(250,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(262,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\book.h(400,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'File%20organization%20group%20project.cpp')
+  
+C:\Users\hagar\source\repos\File organization group project\File organization group project\Library_system.h(222,1): warning C4715: 'Library_system::search_id': not all control paths return a value
+  File organization group project.vcxproj -> C:\Users\hagar\source\repos\File organization group project\x64\Debug\File organization group project.exe

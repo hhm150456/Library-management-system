@@ -130,35 +130,31 @@ public:
 
 	int number_of_books() {
 		int counter = 0;
-		fstream books("books.txt", ios::in);
+		fstream books("books.txt", ios::in| ios::binary);
 		if (!books.is_open()) {
 			return 0;
 		}
 		char flag;
 		string record;
 		books.seekg(0, ios::beg);
-		books.read((char*)&flag, 1);
-		if (flag == deleted_book)
-		{
-			getline(books, record, recordDelimiter);
-		}
-		while (getline(books, record, recordDelimiter)) {
+		do {
+			books.seekg(0, ios::cur);
 			books.read((char*)&flag, 1);
-			if (flag == deleted_book) {
-				books.seekg(-1, ios::cur);
+			if (flag == deleted_book)
+			{
+				
 				continue;
 			}
 			else {
 				++counter;
 			}
-
-		}
+		} while (getline(books, record, recordDelimiter) );
 
 		books.close();
-		return counter;
+		return counter-1;
 	}
 
-	short search_id(string id) 
+	short search_id(string id)
 	{
 		fstream books("books.txt", ios::in | ios::binary);
 		fstream index("index.txt", ios::in | ios::binary);
@@ -209,7 +205,7 @@ public:
 				getline(books, field, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Year of publishing: " << field << endl;
 				getline(books, field, fieldDelimiter);
-				cout << "\t\t\t\t\t\t   Number of times borrowed: " << field << endl <<endl << endl;
+				cout << "\t\t\t\t\t\t   Number of times borrowed: " << field << endl << endl << endl;
 				getline(books, record, recordDelimiter);
 				return offset;
 			}
@@ -233,7 +229,7 @@ public:
 		}
 		books.seekg(0);
 		int counter = 0;
-		string title,p_id;
+		string title, p_id;
 		int matches = 0;
 		char flag;
 		string record;
@@ -266,7 +262,7 @@ public:
 				getline(books, title, fieldDelimiter);
 				cout << "\t\t\t\t\t\t   Year of publishing: " << title << endl;
 				getline(books, title, fieldDelimiter);
-				cout << "\t\t\t\t\t\t   Number of times borrowed: " << title << endl <<endl <<endl;
+				cout << "\t\t\t\t\t\t   Number of times borrowed: " << title << endl << endl << endl;
 				getline(books, record, recordDelimiter);
 				++matches;
 			}
